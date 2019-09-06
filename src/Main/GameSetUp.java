@@ -121,8 +121,9 @@ public class GameSetUp implements Runnable {
         //initiallizes everything in order to run without breaking
         init();
 
-        int fps = 60;
-        double timePerTick = 1000000000 / fps;
+        //int fps = 60; THESE TWO LINES WERE MEANT TO BE DELETED BUTTT JUST IN CASE WE DO 
+        //double timePerTick = 1000000000 / FPS; SPEED DIFFERENTLY, I KEPT IT IN A COMMENT
+        
         double delta = 0;
         long now;
         long lastTime = System.nanoTime();
@@ -133,6 +134,7 @@ public class GameSetUp implements Runnable {
         while(running){
             //makes sure the games runs smoothly at 60 FPS
             now = System.nanoTime();
+            double timePerTick = 1000000000 / Game.Entities.Dynamic.Player.Speed; //This is moved/added here so that it changes based on the increase of the Speed value. If we do speed differently we delete this.
             delta += (now - lastTime) / timePerTick;
             timer += now - lastTime;
             lastTime = now;
@@ -179,7 +181,7 @@ public class GameSetUp implements Runnable {
         g.drawImage(loading ,0,0,width,height,null);
         if(State.getState() != null)
             State.getState().render(g);
-
+        g.drawString("Score: " + Game.Entities.Dynamic.Player.Counter, 5, 10); // This draws the score on the screen. It's missing the calculations.
 
         //End Drawing!
         bs.show();

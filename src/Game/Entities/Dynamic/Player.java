@@ -14,6 +14,9 @@ public class Player {
     public int lenght;
     public boolean justAte;
     private Handler handler;
+    
+    public static int Counter; // Score
+    public static int Speed = 60; //Frames Per Second
 
     public int xCoord;
     public int yCoord;
@@ -39,14 +42,16 @@ public class Player {
             checkCollisionAndMove();
             moveCounter=0;
         }
-        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_UP)){
+        if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_UP) && (direction !="Down")){
             direction="Up";
-        }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_DOWN)){
+        }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_DOWN) && (direction !="Up")){
             direction="Down";
-        }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_LEFT)){
+        }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_LEFT) && (direction !="Right")){
             direction="Left";
-        }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_RIGHT)){
+        }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_RIGHT) && (direction !="Left")){
             direction="Right";
+        }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_N)) {
+        	Eat();
         }
 
     }
@@ -89,6 +94,8 @@ public class Player {
 
 
         if(handler.getWorld().appleLocation[xCoord][yCoord]){
+        	Counter++; // Counter keeps track of score
+        	Speed += 25; // This speeds up the frames per second and therefore the tickspersecond
             Eat();
         }
 
@@ -101,10 +108,9 @@ public class Player {
     }
 
     public void render(Graphics g,Boolean[][] playeLocation){
-        Random r = new Random();
         for (int i = 0; i < handler.getWorld().GridWidthHeightPixelCount; i++) {
             for (int j = 0; j < handler.getWorld().GridWidthHeightPixelCount; j++) {
-                g.setColor(Color.green);
+                g.setColor(new Color(0 ,250, 0));
 
                 if(playeLocation[i][j]||handler.getWorld().appleLocation[i][j]){
                     g.fillRect((i*handler.getWorld().GridPixelsize),

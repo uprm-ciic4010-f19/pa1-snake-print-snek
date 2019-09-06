@@ -21,8 +21,9 @@ public class Apple {
         this.xCoord=x;
         this.yCoord=y;
     }
+   
+    // This renders the apple and colors it red	
     public void render(Graphics g,Boolean[][] appleLocation){
-        Random r = new Random();
         for (int i = 0; i < handler.getWorld().GridWidthHeightPixelCount; i++) {
             for (int j = 0; j < handler.getWorld().GridWidthHeightPixelCount; j++) {
                 g.setColor(Color.red);
