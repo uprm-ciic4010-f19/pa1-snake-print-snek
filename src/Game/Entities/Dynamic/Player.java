@@ -3,9 +3,11 @@ package Game.Entities.Dynamic;
 import Main.Handler;
 
 import java.awt.*;
+import java.awt.Taskbar.State;
 import java.awt.event.KeyEvent;
 
 import Game.Entities.Static.Apple;
+import Game.GameStates.GameState;
 
 
 /**
@@ -60,6 +62,7 @@ public class Player {
         	direction="Right";
         }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_EQUALS)) {
         	Speed += 5;
+        
         }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_MINUS)) {
         	Speed -= 5;	
         }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_N)) {

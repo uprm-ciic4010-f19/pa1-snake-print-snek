@@ -11,6 +11,7 @@ import Resources.Images;
 
 import javax.sound.sampled.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -137,6 +138,9 @@ public class GameSetUp implements Runnable {
             delta += (now - lastTime) / timePerTick;
             timer += now - lastTime;
             lastTime = now;
+            if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_ESCAPE)){
+            	GameState.setState(pauseState);
+            }
 
             if(delta >= 1){
                 //re-renders and ticks the game around 60 times per second
