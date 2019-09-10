@@ -183,9 +183,10 @@ public class GameSetUp implements Runnable {
         Font Timesfont=new Font("TimesRoman",Font.BOLD,15);
         g.setFont(Timesfont);
         g.setColor(Color.black);
-        g.drawString("Score: " + Game.Entities.Dynamic.Player.CurrentSore, 5, 11); // This draws the score on the screen. It's missing the calculations.
-        g.drawString("Apples: " + Game.Entities.Dynamic.Player.Counter, 5, 28); // This draws the score on the screen. It's missing the calculations.
-
+        g.drawString("Score: " + Game.Entities.Dynamic.Player.score, 5, 11); // This draws the score on the screen. 
+        g.drawString("Apples: " + Game.Entities.Dynamic.Player.Counter, 5, 28); // This draws the number of apples collected on the screen.
+        g.drawString("Moves: " + Game.Entities.Dynamic.Player.MoveCount+"/25", 5, 42);
+        
         //End Drawing!
         bs.show();
         g.dispose();
