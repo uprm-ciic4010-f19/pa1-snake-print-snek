@@ -129,7 +129,6 @@ public class GameSetUp implements Runnable {
         long lastTime = System.nanoTime();
         long timer = 0;
         int ticks = 0;
-        int tickcount=0;
 
         while(running){
             //makes sure the games runs smoothly at 60 FPS
@@ -181,7 +180,11 @@ public class GameSetUp implements Runnable {
         g.drawImage(loading ,0,0,width,height,null);
         if(State.getState() != null)
             State.getState().render(g);
-        g.drawString("Score: " + Game.Entities.Dynamic.Player.Counter, 5, 10); // This draws the score on the screen. It's missing the calculations.
+        Font Timesfont=new Font("TimesRoman",Font.BOLD,15);
+        g.setFont(Timesfont);
+        g.setColor(Color.black);
+        g.drawString("Score: " + Game.Entities.Dynamic.Player.CurrentSore, 5, 11); // This draws the score on the screen. It's missing the calculations.
+        g.drawString("Apples: " + Game.Entities.Dynamic.Player.Counter, 5, 28); // This draws the score on the screen. It's missing the calculations.
 
         //End Drawing!
         bs.show();

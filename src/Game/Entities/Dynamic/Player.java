@@ -4,7 +4,7 @@ import Main.Handler;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.util.Random;
+
 
 /**
  * Created by AlexVR on 7/2/2018.
@@ -16,6 +16,7 @@ public class Player {
     private Handler handler;
     
     public static int Counter; // Score
+    public static double CurrentSore; // Score
     public static int Speed = 60; //Frames Per Second
 
     public int xCoord;
@@ -50,8 +51,44 @@ public class Player {
             direction="Left";
         }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_RIGHT) && (direction !="Left")){
             direction="Right";
+        }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_EQUALS)) {
+        	Speed += 5;
+        }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_MINUS)) {
+        	Speed -= 5;	
         }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_N)) {
-        	Eat();
+        	lenght++;
+            Tail tail= null;
+            handler.getWorld().appleLocation[xCoord][yCoord]=false;
+            handler.getWorld().appleOnBoard=true;
+            if( handler.getWorld().body.isEmpty()){
+                if(this.xCoord!=handler.getWorld().GridWidthHeightPixelCount-1){
+                    tail = new Tail(this.xCoord+1,this.yCoord,handler);
+                }else{
+                    if(this.yCoord!=0){
+                        tail = new Tail(this.xCoord,this.yCoord-1,handler);
+                    }else{
+                        tail =new Tail(this.xCoord,this.yCoord+1,handler);
+                    }
+                }
+            }else{
+                if(handler.getWorld().body.getLast().x!=handler.getWorld().GridWidthHeightPixelCount-1){
+                    tail=new Tail(handler.getWorld().body.getLast().x+1,this.yCoord,handler);
+                }else{
+                    if(handler.getWorld().body.getLast().y!=0){
+                        tail=new Tail(handler.getWorld().body.getLast().x,this.yCoord-1,handler);
+                    }else{
+                        tail=new Tail(handler.getWorld().body.getLast().x,this.yCoord+1,handler);
+
+                    }
+                }
+            }
+            handler.getWorld().body.addLast(tail);
+            handler.getWorld().playerLocation[tail.x][tail.y] = false;
+            
+            
+            
+            
+            
         }
 
     }
@@ -94,8 +131,9 @@ public class Player {
 
 
         if(handler.getWorld().appleLocation[xCoord][yCoord]){
-        	Counter++; // Counter keeps track of score
-        	Speed += 25; // This speeds up the frames per second and therefore the tickspersecond
+        	Counter++;// Counter keeps track of score
+        	CurrentSore = (double) Math.sqrt(2*Counter+1);
+        	Speed += 5; // This speeds up the frames per second and therefore the tickspersecond
             Eat();
         }
 

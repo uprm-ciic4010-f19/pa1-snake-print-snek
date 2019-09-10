@@ -2,7 +2,7 @@ package Game.Entities.Static;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.util.Random;
+
 
 import Main.Handler;
 
