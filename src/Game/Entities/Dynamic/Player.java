@@ -292,7 +292,7 @@ public class Player {
 	       handler.getWorld().body.pollLast();
 	       handler.getWorld().playerLocation[tail.x][tail.y] = true;
         }
-        if(Apple.isGood==true) {
+        else {
  	       handler.getWorld().body.addLast(tail);
  	       handler.getWorld().playerLocation[tail.x][tail.y] = true;
          }

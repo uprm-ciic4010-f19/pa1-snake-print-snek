@@ -38,25 +38,24 @@ public class Apple {
                             (j*handler.getWorld().GridPixelsize),
                             handler.getWorld().GridPixelsize,
                             handler.getWorld().GridPixelsize);
-                    		if(Player.MoveCount>=25) {//If the player has made 25 key presses the apple changes color and sets the isGood to false which changes the points value of the apple.
-	                    		g.setColor(new Color(128,0,0));
-	                            if(appleLocation[i][j]||handler.getWorld().appleLocation[i][j]){
-	                                g.fillRect((i*handler.getWorld().GridPixelsize),
-	                                        (j*handler.getWorld().GridPixelsize),
-	                                        handler.getWorld().GridPixelsize,
-	                                        handler.getWorld().GridPixelsize);
-	                                		isGood=false;
-	                                		
-	                                		
-	                            }
-                    
-                    		
+                    if(Player.MoveCount>=25) { // Checks if it should turn the apple into a bad apple
+                    		RenderBadApple(g, i, j, appleLocation);
+                    		isGood = false;
+	                            	}
                     		}		 
-                    		
-                    		}
-            							
-                }
-            }
-        }
+                    	}
+            		}
+    		}
+        	
+    	public void RenderBadApple(Graphics g, int i, int j,Boolean[][] appleLocation) {
+    		//If the player has made 25 key presses the apple changes color and sets the isGood to false which changes the points value of the apple.
+	    		g.setColor(new Color(128,0,0));
+	            if(appleLocation[i][j]||handler.getWorld().appleLocation[i][j]){
+	                g.fillRect((i*handler.getWorld().GridPixelsize),
+	                        (j*handler.getWorld().GridPixelsize),
+	                        handler.getWorld().GridPixelsize,
+	                        handler.getWorld().GridPixelsize);
+	                	}
+    			}
     	
 }
