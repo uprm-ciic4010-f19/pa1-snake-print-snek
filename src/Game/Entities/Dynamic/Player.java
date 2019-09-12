@@ -64,17 +64,25 @@ public class Player {
         	direction="Right";
         	
         }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_1)){
-        	Color="BLUE";
-        }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_2)){
         	Color="RED";
-        }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_3)) {
+        }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_2)){
         	Color="ORANGE";
-        }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_4)) {
-        	Color="BLACK";
-        }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_5)) {
-        	Color="RAINBOW";
+        }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_3)){
+        	Color="YELLOW";
+        }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_4)){
+        	Color="LIME";
+        }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_5)){
+        	Color="SKYBLUE";
         }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_6)){
+        	Color="BLUE";
+        }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_7)){
         	Color="INDIGO";
+        }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_8)){
+        	Color="PURPLE";
+        }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_9)){
+        	Color="BLACK";
+        }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_0)) {
+        	Color="RAINBOW";
         }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_EQUALS)) {
         	Speed += 5;
         }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_MINUS)) {
@@ -197,19 +205,28 @@ public class Player {
         for (int i = 0; i < handler.getWorld().GridWidthHeightPixelCount; i++) {
             for (int j = 0; j < handler.getWorld().GridWidthHeightPixelCount; j++) {
             	if(Color=="BLUE") {
-            		g.setColor(new Color(0 ,0, 255));
+            		g.setColor(new Color(255 ,0, 0));
             	}else if(Color=="RED") {
             		g.setColor(new Color(255 ,0, 0));
             	}else if(Color=="ORANGE") {
+            		g.setColor(new Color(245, 130, 15));
+            	}else if(Color=="YELLOW") {
             		g.setColor(new Color(255 ,215, 32));
+            	}else if(Color=="LIME") {
+            		g.setColor(new Color(0 ,255, 0));
+            	}else if(Color=="SKYBLUE") {
+            		g.setColor(new Color(0 ,255, 255));
+            	}else if(Color=="BLUE") {
+            		g.setColor(new Color(0 , 0, 255));
+            	}else if(Color=="INDIGO") {
+            		g.setColor(new Color(75 ,0, 130));
+            	}else if(Color=="PURPLE") {
+            		g.setColor(new Color(255 ,0, 255));
             	}else if(Color=="BLACK") {
             		g.setColor(new Color(0 ,0, 0));
             	}else if(Color=="RAINBOW") {
             		g.setColor(new Color(a ,b, c));
-            	}else if(Color=="INDIGO") {
-            		g.setColor(new Color(75,0,130));
             	}else {
-            		
             		g.setColor(new Color(0 ,255, 0));
             	}
                 if(playeLocation[i][j]||handler.getWorld().appleLocation[i][j]){
@@ -226,7 +243,7 @@ public class Player {
     }
 
     public void Eat(){
-    	kill();
+    	//kill();
         lenght++;
         Tail tail= null;
         handler.getWorld().appleLocation[xCoord][yCoord]=false;

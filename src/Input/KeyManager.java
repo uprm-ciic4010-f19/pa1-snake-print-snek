@@ -11,7 +11,10 @@ import java.awt.event.KeyListener;
 public class KeyManager implements KeyListener {
 
 	private boolean[] keys,justPressed,cantPress;
-	public boolean up=false, down=false, left=false, right=false, debug_eat=false, debug_speedplus=false, debug_speedslow=false,changetoblue=false,changetored=false,changetoorange=false,changetoblack=false,changetorainbow=false,changetoindigo=false;
+	public boolean up=false, down=false, left=false, right=false, debug_eat=false,
+			debug_speedplus=false, debug_speedslow=false,changetoblue=false,changetored=false,
+			changetoorange=false,changetoblack=false,changetorainbow=false,changetoindigo=false,
+			changetoyellow=false,changetolime=false,changetopurple=false,changetoskyblue=false;
 	public boolean pbutt=false;
 
 
@@ -45,12 +48,16 @@ public class KeyManager implements KeyListener {
 		debug_speedplus = keys[KeyEvent.VK_EQUALS];
 		debug_speedslow = keys[KeyEvent.VK_MINUS];
 		pbutt = keys[KeyEvent.VK_ESCAPE];
-		changetoblue = keys[KeyEvent.VK_1];
-		changetored = keys[KeyEvent.VK_2];
-		changetoorange=keys[KeyEvent.VK_3];
-		changetoblack=keys[KeyEvent.VK_4];
-		changetorainbow=keys[KeyEvent.VK_5];
-		changetoindigo=keys[KeyEvent.VK_6];
+		changetored = keys[KeyEvent.VK_1];
+		changetoorange = keys[KeyEvent.VK_2];
+		changetoyellow=keys[KeyEvent.VK_3];
+		changetolime=keys[KeyEvent.VK_4];
+		changetoskyblue=keys[KeyEvent.VK_5];
+		changetoblue=keys[KeyEvent.VK_6];
+		changetoindigo=keys[KeyEvent.VK_7];
+		changetopurple=keys[KeyEvent.VK_8];
+		changetoblack=keys[KeyEvent.VK_9];
+		changetorainbow=keys[KeyEvent.VK_0];
 
 	}
 
