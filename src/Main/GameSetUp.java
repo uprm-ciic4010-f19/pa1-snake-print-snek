@@ -6,6 +6,7 @@ import Game.GameStates.GameState;
 import Game.GameStates.MenuState;
 import Game.GameStates.PauseState;
 import Game.GameStates.State;
+import Game.GameStates.GameOverState;
 import Input.KeyManager;
 import Input.MouseManager;
 import Resources.Images;
@@ -47,6 +48,7 @@ public class GameSetUp implements Runnable {
     public State gameState;
     public State menuState;
     public State pauseState;
+    public State gameoverState;
 
     //Res.music
     private InputStream audioFile;
@@ -83,6 +85,7 @@ public class GameSetUp implements Runnable {
         gameState = new GameState(handler);
         menuState = new MenuState(handler);
         pauseState = new PauseState(handler);
+        gameoverState = new GameOverState(handler);
 
         State.setState(menuState);
 
@@ -134,6 +137,12 @@ public class GameSetUp implements Runnable {
         int ticks = 0;
 
         while(running){
+        	if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_ESCAPE)){
+            	GameState.setState(pauseState);//This pauses the game 
+            }
+            if(Player.collide==true) {
+            	State.setState(gameoverState); // If the player collides with his body it will return to the main screen
+        	}
         	
             //makes sure the games runs smoothly at 60 FPS
             now = System.nanoTime();
@@ -141,12 +150,7 @@ public class GameSetUp implements Runnable {
             delta += (now - lastTime) / timePerTick;
             timer += now - lastTime;
             lastTime = now;
-            if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_ESCAPE)){
-            	GameState.setState(pauseState);//This pauses the game 
-            }
-            if(Player.collide==true) {
-            	State.setState(menuState); // If the player collides with his body it will return to the main screen
-        	}
+            
             if(delta >= 1){
                 //re-renders and ticks the game around 60 times per second
                 tick();

@@ -253,7 +253,6 @@ public class Player {
     }
 
     public void Eat(){
-    	//kill();
         lenght++;
         Tail tail= null;
         handler.getWorld().appleLocation[xCoord][yCoord]=false;
