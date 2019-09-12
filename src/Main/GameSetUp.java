@@ -1,6 +1,7 @@
 package Main;
 
 import Display.DisplayScreen;
+import Game.Entities.Dynamic.Player;
 import Game.GameStates.GameState;
 import Game.GameStates.MenuState;
 import Game.GameStates.PauseState;
@@ -125,6 +126,7 @@ public class GameSetUp implements Runnable {
         //int fps = 60; THESE TWO LINES WERE MEANT TO BE DELETED BUTTT JUST IN CASE WE DO 
         //double timePerTick = 1000000000 / FPS; SPEED DIFFERENTLY, I KEPT IT IN A COMMENT
         
+        
         double delta = 0;
         long now;
         long lastTime = System.nanoTime();
@@ -132,6 +134,7 @@ public class GameSetUp implements Runnable {
         int ticks = 0;
 
         while(running){
+        	
             //makes sure the games runs smoothly at 60 FPS
             now = System.nanoTime();
             double timePerTick = 1000000000 / Game.Entities.Dynamic.Player.Speed; //This is moved/added here so that it changes based on the increase of the Speed value. If we do speed differently we delete this.
@@ -141,7 +144,9 @@ public class GameSetUp implements Runnable {
             if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_ESCAPE)){
             	GameState.setState(pauseState);//This pauses the game 
             }
-
+            if(Player.collide==true) {
+            	State.setState(menuState); // If the player collides with his body it will return to the main screen
+        	}
             if(delta >= 1){
                 //re-renders and ticks the game around 60 times per second
                 tick();

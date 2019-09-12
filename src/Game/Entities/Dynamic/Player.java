@@ -18,6 +18,7 @@ public class Player {
 	
 	public static String Color="DEFAULT";
     public int lenght;
+    public static boolean collide = false;
     public boolean justAte;
     private Handler handler;
     public static int MoveCount;
@@ -130,12 +131,17 @@ public class Player {
         handler.getWorld().playerLocation[xCoord][yCoord]=false;
         int x = xCoord;
         int y = yCoord;
-        
-        if(handler.getWorld().player.xCoord==Tail.xTail) {
-        	if(handler.getWorld().player.yCoord==Tail.yTail) {
-        		System.out.println("collide");
+        for (int count =0; count< handler.getWorld().body.size(); count++) {// CHecks if the head has collided with any part of the body. If it does then it will make the boolean Collide true
+        	if(handler.getWorld().player.xCoord==handler.getWorld().body.get(count).x) {
+        		if(handler.getWorld().player.yCoord==handler.getWorld().body.get(count).y) {
+        			collide=true;
+        		}
+        		
+        		
+            		
         	}
         }
+        
        
         switch (direction){
             case "Left":
