@@ -16,7 +16,7 @@ import Game.GameStates.GameState;
  */
 public class Player {
 	
-	public static String Color="";
+	public static String Color="DEFAULT";
     public int lenght;
     public boolean justAte;
     private Handler handler;
@@ -130,6 +130,12 @@ public class Player {
         handler.getWorld().playerLocation[xCoord][yCoord]=false;
         int x = xCoord;
         int y = yCoord;
+        
+        if(handler.getWorld().player.xCoord==Tail.xTail) {
+        	if(handler.getWorld().player.yCoord==Tail.yTail) {
+        		System.out.println("collide");
+        	}
+        }
        
         switch (direction){
             case "Left":
@@ -204,18 +210,16 @@ public class Player {
 		int c = generateRandomInt(255);
         for (int i = 0; i < handler.getWorld().GridWidthHeightPixelCount; i++) {
             for (int j = 0; j < handler.getWorld().GridWidthHeightPixelCount; j++) {
-            	if(Color=="BLUE") {
-            		g.setColor(new Color(255 ,0, 0));
-            	}else if(Color=="RED") {
+            	if(Color=="RED") {
             		g.setColor(new Color(255 ,0, 0));
             	}else if(Color=="ORANGE") {
-            		g.setColor(new Color(245, 130, 15));
+            		g.setColor(new Color(255, 153, 51));
             	}else if(Color=="YELLOW") {
-            		g.setColor(new Color(255 ,215, 32));
+            		g.setColor(new Color(255 ,255, 51));
             	}else if(Color=="LIME") {
-            		g.setColor(new Color(0 ,255, 0));
+            		g.setColor(new Color(51 ,255, 51));
             	}else if(Color=="SKYBLUE") {
-            		g.setColor(new Color(0 ,255, 255));
+            		g.setColor(new Color(0 ,204, 204));
             	}else if(Color=="BLUE") {
             		g.setColor(new Color(0 , 0, 255));
             	}else if(Color=="INDIGO") {

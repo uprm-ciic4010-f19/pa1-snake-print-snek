@@ -52,10 +52,32 @@ public abstract class WorldBase {
     }
 
     public void render(Graphics g){
-
+    	String backgroundColor = Game.Entities.Dynamic.Player.Color;
         for (int i = 0; i <= 800; i = i + GridPixelsize) {
-
-            g.setColor(new Color(255,0,255));
+//        	if(backgroundColor=="RED") {
+//        		g.setColor(new Color(51 , 255, 51));
+//        	}else if(backgroundColor=="ORANGE") {
+//        		g.setColor(new Color(0, 0,255));
+//        	}else if(backgroundColor=="YELLOW") {
+//        		g.setColor(new Color(255 , 0, 255));
+//        	}else if(backgroundColor=="LIME") {
+//        		g.setColor(new Color(255 ,0, 0));
+//        	}else if(backgroundColor=="SKYBLUE") {
+//        		g.setColor(new Color(0, 0, 0));
+//        	}else if(backgroundColor=="BLUE") {
+//        		g.setColor(new Color(255, 153, 51));
+//        	}else if(backgroundColor=="INDIGO") {
+//        		g.setColor(new Color(255, 153, 51));
+//        	}else if(backgroundColor=="PURPLE") {
+//        		g.setColor(new Color(255, 153, 51));
+//        	}else if(backgroundColor=="BLACK") {
+//        		g.setColor(new Color(255, 255, 255));
+//        	}else if(backgroundColor=="RAINBOW") {
+//        		g.setColor(new Color(255, 255, 255));
+//        	}else {
+//        		g.setColor(new Color(255 ,0, 255));
+//        	} //WIP
+        	g.setColor(new Color(255, 0, 255));
             g.drawLine(0, i, handler.getWidth() , i);
             g.drawLine(i,0,i,handler.getHeight());
 

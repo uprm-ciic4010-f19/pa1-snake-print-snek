@@ -47,7 +47,30 @@ public class DisplayScreen {
         canvas.setMaximumSize(new Dimension(width, height));
         canvas.setMinimumSize(new Dimension(width, height));
         canvas.setFocusable(false);
-        canvas.setBackground(new Color(255,0,255));
+        String backgroundColor = Game.Entities.Dynamic.Player.Color;
+        if(backgroundColor=="RED") {
+    		canvas.setBackground(new Color(51, 255, 51));
+    	}else if(backgroundColor=="ORANGE") {
+    		canvas.setBackground(new Color(0, 0,255));
+    	}else if(backgroundColor=="YELLOW") {
+    		canvas.setBackground(new Color(255, 0, 255));
+    	}else if(backgroundColor=="LIME") {
+    		canvas.setBackground(new Color(255, 0, 0));
+    	}else if(backgroundColor=="SKYBLUE") {
+    		canvas.setBackground(new Color(0, 0, 0));
+    	}else if(backgroundColor=="BLUE") {
+    		canvas.setBackground(new Color(255, 153, 51));
+    	}else if(backgroundColor=="INDIGO") {
+    		canvas.setBackground(new Color(255, 153, 51));
+    	}else if(backgroundColor=="PURPLE") {
+    		canvas.setBackground(new Color(255, 153, 51));
+    	}else if(backgroundColor=="BLACK") {
+    		canvas.setBackground(new Color(255, 255, 255));
+    	}else if(backgroundColor=="RAINBOW") {
+    		canvas.setBackground(new Color(255, 255, 255));
+    	}else {
+    		canvas.setBackground(new Color(255, 0, 255));
+    	}
 
         frame.add(canvas);
         frame.pack();
