@@ -73,9 +73,10 @@ public class Player {
         	Color="BLACK";
         }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_5)) {
         	Color="RAINBOW";
+        }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_6)){
+        	Color="INDIGO";
         }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_EQUALS)) {
         	Speed += 5;
-        
         }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_MINUS)) {
         	Speed -= 5;	
         }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_N)) {
@@ -184,8 +185,15 @@ public class Player {
         }
 
     }
-
+    public static int generateRandomInt(int upperRange){
+        Random random = new Random();
+        return random.nextInt(upperRange);
+    }
+    
     public void render(Graphics g,Boolean[][] playeLocation){
+		int a = generateRandomInt(255);
+		int b = generateRandomInt(255);
+		int c = generateRandomInt(255);
         for (int i = 0; i < handler.getWorld().GridWidthHeightPixelCount; i++) {
             for (int j = 0; j < handler.getWorld().GridWidthHeightPixelCount; j++) {
             	if(Color=="BLUE") {
@@ -197,11 +205,9 @@ public class Player {
             	}else if(Color=="BLACK") {
             		g.setColor(new Color(0 ,0, 0));
             	}else if(Color=="RAINBOW") {
-            		Random rand = new Random();
-            		int a = rand.nextInt();
-            		int b = rand.nextInt();
-            		int c = rand.nextInt();
-            		g.setColor(new Color(a ,a, a));
+            		g.setColor(new Color(a ,b, c));
+            	}else if(Color=="INDIGO") {
+            		g.setColor(new Color(75,0,130));
             	}else {
             		
             		g.setColor(new Color(0 ,255, 0));
