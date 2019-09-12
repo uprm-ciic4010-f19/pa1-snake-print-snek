@@ -139,7 +139,7 @@ public class GameSetUp implements Runnable {
             timer += now - lastTime;
             lastTime = now;
             if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_ESCAPE)){
-            	GameState.setState(pauseState);
+            	GameState.setState(pauseState);//This pauses the game 
             }
 
             if(delta >= 1){
