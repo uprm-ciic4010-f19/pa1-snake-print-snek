@@ -1,6 +1,7 @@
 package Game.Entities.Dynamic;
 
 import Main.Handler;
+import java.util.Random;
 
 import java.awt.*;
 import java.awt.Taskbar.State;
@@ -14,7 +15,8 @@ import Game.GameStates.GameState;
  * Created by AlexVR on 7/2/2018.
  */
 public class Player {
-
+	
+	public static String Color="";
     public int lenght;
     public boolean justAte;
     private Handler handler;
@@ -60,6 +62,17 @@ public class Player {
         }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_RIGHT) && (direction !="Left")){
         	MoveCount+=1;
         	direction="Right";
+        	
+        }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_1)){
+        	Color="BLUE";
+        }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_2)){
+        	Color="RED";
+        }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_3)) {
+        	Color="ORANGE";
+        }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_4)) {
+        	Color="BLACK";
+        }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_5)) {
+        	Color="RAINBOW";
         }if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_EQUALS)) {
         	Speed += 5;
         
@@ -104,6 +117,7 @@ public class Player {
     }
 
     public void checkCollisionAndMove(){
+    	
         handler.getWorld().playerLocation[xCoord][yCoord]=false;
         int x = xCoord;
         int y = yCoord;
@@ -119,8 +133,7 @@ public class Player {
                 break;
             case "Right":
                 if(xCoord==handler.getWorld().GridWidthHeightPixelCount-1){
-                    
-                    
+                	
                     handler.getWorld().player.xCoord -= 59;
                     
                 }else{
@@ -175,8 +188,24 @@ public class Player {
     public void render(Graphics g,Boolean[][] playeLocation){
         for (int i = 0; i < handler.getWorld().GridWidthHeightPixelCount; i++) {
             for (int j = 0; j < handler.getWorld().GridWidthHeightPixelCount; j++) {
-                g.setColor(new Color(0 ,250, 0));
-
+            	if(Color=="BLUE") {
+            		g.setColor(new Color(0 ,0, 255));
+            	}else if(Color=="RED") {
+            		g.setColor(new Color(255 ,0, 0));
+            	}else if(Color=="ORANGE") {
+            		g.setColor(new Color(255 ,215, 32));
+            	}else if(Color=="BLACK") {
+            		g.setColor(new Color(0 ,0, 0));
+            	}else if(Color=="RAINBOW") {
+            		Random rand = new Random();
+            		int a = rand.nextInt();
+            		int b = rand.nextInt();
+            		int c = rand.nextInt();
+            		g.setColor(new Color(a ,a, a));
+            	}else {
+            		
+            		g.setColor(new Color(0 ,255, 0));
+            	}
                 if(playeLocation[i][j]||handler.getWorld().appleLocation[i][j]){
                     g.fillRect((i*handler.getWorld().GridPixelsize),
                             (j*handler.getWorld().GridPixelsize),
@@ -191,6 +220,7 @@ public class Player {
     }
 
     public void Eat(){
+    	kill();
         lenght++;
         Tail tail= null;
         handler.getWorld().appleLocation[xCoord][yCoord]=false;
