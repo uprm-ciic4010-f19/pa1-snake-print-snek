@@ -9,6 +9,8 @@ import UI.UIManager;
 
 import java.awt.*;
 
+import Game.Entities.Dynamic.Player;
+
 /**
  * Created by AlexVR on 7/1/2018.
  */
@@ -18,6 +20,7 @@ public class MenuState extends State {
 
     public MenuState(Handler handler) {
         super(handler);
+        
         uiManager = new UIManager(handler);
         handler.getMouseManager().setUimanager(uiManager);
 
@@ -28,6 +31,9 @@ public class MenuState extends State {
                 handler.getMouseManager().setUimanager(null);
                 handler.getGame().reStart();
                 State.setState(handler.getGame().gameState);
+                if(Player.collide==true) {
+                	Player.collide=false;
+                }
             }
         }));
     }
