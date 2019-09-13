@@ -22,24 +22,33 @@ public class GameOverState extends State {
         uiManager = new UIManager(handler);
         handler.getMouseManager().setUimanager(uiManager);
 
-        uiManager.addObjects(new UIImageButton(56, 240, 128, 64, Images.Resume, () -> {
+        uiManager.addObjects(new UIImageButton(335, 180, 128, 64, Images.Restart, () -> {
             handler.getMouseManager().setUimanager(null);
             State.setState(handler.getGame().gameState);
+            Player.score=0;
+            Player.Counter=0;
+            Player.MoveCount=0;
+            if(Player.collide==true) {
+            	Player.collide=false;
+            }
         }));
 
-        uiManager.addObjects(new UIImageButton(30,300,128, 64, Images.BTitle, () -> {
+        uiManager.addObjects(new UIImageButton(335,520,128, 64, Images.BTitle, () -> {
             handler.getMouseManager().setUimanager(null);
             State.setState(handler.getGame().menuState);
             Player.score=0;
             Player.Counter=0;
             Player.MoveCount=0;
+            if(Player.collide==true) {
+            	Player.collide=false;
+            }
         }));
-
-
-
-
-
     }
+    
+
+
+
+    
 
     @Override
     public void tick() {
@@ -60,7 +69,7 @@ public class GameOverState extends State {
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(Images.Pause,0,0,800,800,null);
+        g.drawImage(Images.gameover,0,0,800,800,null);
         uiManager.Render(g);
 
     }

@@ -141,7 +141,7 @@ public class GameSetUp implements Runnable {
             	GameState.setState(pauseState);//This pauses the game 
             }
             if(Player.collide==true) {
-            	State.setState(menuState); // If the player collides with his body it will return to the main screen
+            	State.setState(gameoverState); // If the player collides with his body it will return to the main screen
         	}
         	
             //makes sure the games runs smoothly at 60 FPS

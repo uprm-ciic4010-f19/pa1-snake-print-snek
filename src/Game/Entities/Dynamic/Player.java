@@ -131,10 +131,11 @@ public class Player {
         handler.getWorld().playerLocation[xCoord][yCoord]=false;
         int x = xCoord;
         int y = yCoord;
-        for (int count =0; count< handler.getWorld().body.size(); count++) {// CHecks if the head has collided with any part of the body. If it does then it will make the boolean Collide true
+        for (int count =0; count< handler.getWorld().body.size(); count++) {// Checks if the head has collided with any part of the body. If it does then it will make the boolean Collide true
         	if(handler.getWorld().player.xCoord==handler.getWorld().body.get(count).x) {
         		if(handler.getWorld().player.yCoord==handler.getWorld().body.get(count).y) {
         			collide=true;
+        			kill();
         		}
         		
         		
@@ -373,6 +374,7 @@ public class Player {
             for (int j = 0; j < handler.getWorld().GridWidthHeightPixelCount; j++) {
 
                 handler.getWorld().playerLocation[i][j]=false;
+                handler.getWorld().body.pollFirst(); //Resets the snake length
 
             }
         }
