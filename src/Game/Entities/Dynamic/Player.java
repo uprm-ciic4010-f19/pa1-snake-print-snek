@@ -93,7 +93,7 @@ public class Player {
             Tail tail= null;
             handler.getWorld().appleLocation[xCoord][yCoord]=false;
             handler.getWorld().appleOnBoard=true;
-            if( handler.getWorld().body.isEmpty()){
+            if(handler.getWorld().body.isEmpty()){
                 if(this.xCoord!=handler.getWorld().GridWidthHeightPixelCount-1){
                     tail = new Tail(this.xCoord+1,this.yCoord,handler);
                 }else{
