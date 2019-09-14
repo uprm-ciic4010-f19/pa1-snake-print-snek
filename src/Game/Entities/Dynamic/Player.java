@@ -20,6 +20,7 @@ public class Player {
     public int lenght;
     public static boolean collide = false;
     public boolean justAte;
+    public static boolean DeathApple = false;
     private Handler handler;
     public static int MoveCount;
     public static int Counter; // Score
@@ -196,6 +197,9 @@ public class Player {
 	        	score=score-CurrentSore;
 	        	Speed += 5; // This speeds up the frames per second and therefore the tickspersecond
 	            Eat();
+	            if(Apple.isGood==false&&handler.getWorld().body.size()==0) {
+	            	DeathApple=true;
+	            }
         	}
         }
 

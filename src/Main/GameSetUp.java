@@ -140,9 +140,15 @@ public class GameSetUp implements Runnable {
         	if(handler.getKeyManager().keyJustPressed(KeyEvent.VK_ESCAPE)){
             	GameState.setState(pauseState);//This pauses the game 
             }
+        	if(Player.DeathApple==true) {
+            	State.setState(gameoverState);
+            	Player.DeathApple=false;
+            	
+        	}
             if(Player.collide==true) {
             	State.setState(gameoverState); // If the player collides with his body it will return to the main screen
-        	}
+            	
+            }
         	
             //makes sure the games runs smoothly at 60 FPS
             now = System.nanoTime();
